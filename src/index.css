@@ -2,41 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* StorySwap Design System - Warm, Community-Driven Marketplace 
+All colors MUST be HSL for consistency and theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Warm background palette */
+    --background: 35 25% 96%; /* Warm cream */
+    --foreground: 25 20% 15%; /* Deep warm brown */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system with warmth */
+    --card: 35 30% 98%; /* Slightly warmer than background */
+    --card-foreground: 25 20% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 35 30% 98%;
+    --popover-foreground: 25 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Soft earthy brown */
+    --primary: 25 35% 35%; /* Rich earth brown */
+    --primary-foreground: 35 25% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Muted sage green */
+    --secondary: 85 15% 88%; /* Soft sage */
+    --secondary-foreground: 25 20% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones */
+    --muted: 35 20% 92%; /* Warm muted cream */
+    --muted-foreground: 25 15% 50%; /* Medium brown */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Golden warmth */
+    --accent: 45 60% 75%; /* Warm gold */
+    --accent-foreground: 25 30% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive kept subtle */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 35 25% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs with warmth */
+    --border: 35 25% 88%; /* Warm border */
+    --input: 35 25% 90%; /* Slightly lighter input */
+    --ring: 25 35% 35%; /* Match primary */
 
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Slightly more rounded for warmth */
+
+    /* StorySwap custom tokens */
+    --story-accent: 45 70% 65%; /* Bright gold for highlights */
+    --story-muted: 35 15% 85%; /* Very soft cream for backgrounds */
+    --vintage-brown: 25 40% 25%; /* Deep vintage brown */
+    --sage-green: 85 25% 75%; /* Soft sage accent */
+    --sunset-orange: 15 70% 70%; /* Warm sunset tone */
+    
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(35, 25%, 96%) 0%, hsl(45, 30%, 90%) 50%, hsl(25, 20%, 92%) 100%);
+    --gradient-story: linear-gradient(180deg, hsl(45, 60%, 85%) 0%, hsl(35, 40%, 80%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(25, 35%, 35%) 0%, hsl(45, 60%, 75%) 50%, hsl(85, 25%, 75%) 100%);
+    
+    /* Shadows with warmth */
+    --shadow-warm: 0 4px 20px hsl(25, 20%, 80% / 0.15);
+    --shadow-story: 0 8px 32px hsl(25, 30%, 70% / 0.2);
+    --shadow-card: 0 2px 12px hsl(25, 20%, 85% / 0.1);
+    
+    /* Animation variables */
+    --transition-warm: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-story: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +129,69 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif;
   }
+}
+
+@layer components {
+  /* StorySwap Component Styles */
+  .story-card {
+    @apply bg-card rounded-xl border border-border shadow-[var(--shadow-card)] overflow-hidden transition-[var(--transition-warm)] hover:shadow-[var(--shadow-story)];
+  }
+  
+  .story-gradient {
+    background: var(--gradient-story);
+  }
+  
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .warm-gradient {
+    background: var(--gradient-warm);
+  }
+  
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:scale-105 hover:-translate-y-1;
+  }
+  
+  .story-reveal {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  }
+  
+  .story-reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  /* Custom animations */
+  .heart-pulse {
+    @apply animate-pulse text-red-400;
+  }
+  
+  .page-turn {
+    @apply transform transition-transform duration-300 hover:rotate-1;
+  }
+}
+
+@layer utilities {
+  /* StorySwap Custom Colors */
+  .text-story-accent { color: hsl(var(--story-accent)); }
+  .text-vintage-brown { color: hsl(var(--vintage-brown)); }
+  .text-sage-green { color: hsl(var(--sage-green)); }
+  .text-sunset-orange { color: hsl(var(--sunset-orange)); }
+  
+  .bg-story-accent { background-color: hsl(var(--story-accent)); }
+  .bg-story-muted { background-color: hsl(var(--story-muted)); }
+  .bg-vintage-brown { background-color: hsl(var(--vintage-brown)); }
+  .bg-sage-green { background-color: hsl(var(--sage-green)); }
+  .bg-sunset-orange { background-color: hsl(var(--sunset-orange)); }
+  
+  /* Custom shadows */
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .shadow-story { box-shadow: var(--shadow-story); }
+  .shadow-card { box-shadow: var(--shadow-card); }
 }
