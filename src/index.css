@@ -194,4 +194,12 @@ All colors MUST be HSL for consistency and theming.
   .shadow-warm { box-shadow: var(--shadow-warm); }
   .shadow-story { box-shadow: var(--shadow-story); }
   .shadow-card { box-shadow: var(--shadow-card); }
+  
+  /* Text truncation utilities */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }

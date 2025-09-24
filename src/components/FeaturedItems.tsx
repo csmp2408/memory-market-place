@@ -1,9 +1,10 @@
 import StoryCard from "./StoryCard";
 import { sampleItems } from "@/data/sampleItems";
+import { Button } from "@/components/ui/button";
 
 const FeaturedItems = () => {
   return (
-    <section className="py-16 px-6 warm-gradient">
+    <section className="py-16 px-6 warm-gradient" id="featured-items">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-vintage-brown mb-4">
@@ -21,9 +22,17 @@ const FeaturedItems = () => {
         </div>
         
         <div className="text-center mt-12">
-          <button className="story-link text-vintage-brown font-semibold text-lg hover:text-story-accent transition-colors">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="story-link text-vintage-brown font-semibold text-lg hover:text-story-accent border-vintage-brown hover:bg-vintage-brown hover:text-primary-foreground transition-colors"
+            onClick={() => {
+              // Scroll to categories section
+              document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             View All Stories →
-          </button>
+          </Button>
         </div>
       </div>
     </section>

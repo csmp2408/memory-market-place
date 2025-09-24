@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const ImpactBanner = () => {
   return (
-    <section className="py-16 px-6 bg-sage-green/5">
+    <section className="py-16 px-6 bg-sage-green/5" id="impact">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-vintage-brown mb-4">
@@ -51,7 +51,15 @@ const ImpactBanner = () => {
         </div>
         
         <div className="text-center">
-          <Button variant="hero" size="lg" className="shadow-story">
+          <Button 
+            variant="hero" 
+            size="lg" 
+            className="shadow-story"
+            onClick={() => {
+              // Scroll to top to start browsing
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
             Join Our Community Impact
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

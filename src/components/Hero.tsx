@@ -29,14 +29,24 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" variant="hero" className="px-8 py-4 text-lg">
-              <Search className="mr-2 h-5 w-5" />
-              Browse Stories
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary shadow-warm px-8 py-4 text-lg">
-              <Heart className="mr-2 h-5 w-5" />
-              Share Your Story
-            </Button>
+          <Button 
+            variant="hero" 
+            size="lg" 
+            className="px-8 py-4 text-lg"
+            onClick={() => document.getElementById('featured-items')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <Search className="mr-2 h-5 w-5" />
+            Browse Stories
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary shadow-warm px-8 py-4 text-lg"
+            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+          >
+            <Heart className="mr-2 h-5 w-5" />
+            Share Your Story
+          </Button>
           </div>
           
           {/* Trust indicators */}

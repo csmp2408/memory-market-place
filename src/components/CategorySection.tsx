@@ -1,4 +1,5 @@
 import { BookOpen, Camera, Home, Palette, Shirt, Gem } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const categories = [
   {
@@ -47,7 +48,7 @@ const categories = [
 
 const CategorySection = () => {
   return (
-    <section className="py-16 px-6">
+    <section className="py-16 px-6" id="categories">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-vintage-brown mb-4">
@@ -62,9 +63,14 @@ const CategorySection = () => {
           {categories.map((category) => {
             const IconComponent = category.icon;
             return (
-              <div 
+              <Button
                 key={category.name}
-                className="story-card hover-lift cursor-pointer p-6 text-center group"
+                variant="ghost" 
+                className="story-card hover-lift cursor-pointer p-6 text-center group h-auto flex flex-col"
+                onClick={() => {
+                  // Scroll to featured items and show a toast
+                  document.getElementById('featured-items')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 <div className={`w-16 h-16 rounded-full ${category.bgColor} flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110`}>
                   <IconComponent className={`h-8 w-8 ${category.color}`} />
@@ -77,7 +83,7 @@ const CategorySection = () => {
                 <p className="text-sm text-muted-foreground">
                   {category.count} stories waiting
                 </p>
-              </div>
+              </Button>
             );
           })}
         </div>
